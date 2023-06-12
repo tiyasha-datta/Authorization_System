@@ -41,13 +41,18 @@ public class AuthenticateController {
 
     @PostMapping("/generate-token")
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-        try{
-            authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
+        //validating user details
+        if(jwtRequest.getUsername() != null & jwtRequest.getPassword() != null){
+            try{
+                authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
 
-        }catch (UsernameNotFoundException e){
-            logger.error("{e} User not found");
-            e.printStackTrace();
-            throw new Exception("User not found");
+            }catch (UsernameNotFoundException e){
+                logger.error("{e} User not found");
+                e.printStackTrace();
+                throw new Exception("User not found");
+            }
+        }else{
+            throw new Exception("Username and password cannot be empty");
         }
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
         String token = this.jwtUtils.generateToken(userDetails);
