@@ -6,6 +6,8 @@ import com.authorizationsystem.entity.role.JwtRequest;
 import com.authorizationsystem.entity.role.JwtResponse;
 import com.authorizationsystem.entity.role.User;
 import com.authorizationsystem.service.UserDetailsServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +24,7 @@ import java.security.Principal;
 @CrossOrigin("*")
 public class AuthenticateController {
 
+    Logger logger = LoggerFactory.getLogger(AuthenticateController.class);
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -37,6 +40,7 @@ public class AuthenticateController {
             authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
 
         }catch (UsernameNotFoundException e){
+            logger.error("{e} User not found");
             e.printStackTrace();
             throw new Exception("User not found");
         }
