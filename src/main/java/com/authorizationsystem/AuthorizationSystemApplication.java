@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,16 +24,19 @@ public class AuthorizationSystemApplication implements CommandLineRunner {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("starting code");
 
 		User user = new User();
 
-		user.setFirstName("tiya");
+		user.setFirstName("tiyasha");
 		user.setEmailId("tiyashadatta@gmail.com");
-		user.setUsername("tiyadatta");
-		user.setPassword("tiya123456");
+		user.setUsername("tiyashadatta");
+		user.setPassword("tiya1234");
 		user.setLastName("datta");
 		user.setPhone("123456789");
 		user.setProfile("default.png");
