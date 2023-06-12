@@ -1,3 +1,8 @@
+/**
+ * Controller class for handling RESTful API requests related to Jwt token management.
+ * Provides endpoints for generate token for users.
+ */
+
 package com.authorizationsystem.controller;
 
 

@@ -1,3 +1,10 @@
+/**
+ * This class contains the main application logic for the Spring Boot application.
+ * It initializes the application context and starts the embedded server.
+ *
+ * Created by Tiyasha Datta on 2023-06-13.
+ */
+
 package com.authorizationsystem;
 
 import com.authorizationsystem.service.UserService;

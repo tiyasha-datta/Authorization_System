@@ -1,3 +1,9 @@
+/**
+ * Controller class for handling RESTful API requests related to user management.
+ * Provides endpoints for user registration and profile retrieval.
+ */
+
+
 package com.authorizationsystem.controller;
 
 import com.authorizationsystem.entity.role.Role;
@@ -22,6 +28,12 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * Create a user's profile information
+     *
+     * @param user The details of the user
+     * @return The user's profile information created in database
+     */
     @PostMapping("/createUser")
     public User createUser(@RequestBody User user) throws Exception {
 
@@ -45,6 +57,12 @@ public class UserController {
         return this.userService.createUser(user,roles);
     }
 
+    /**
+     * Retrieves a user's profile information based on the provided user name.
+     *
+     * @param username The ID of the user
+     * @return The user's profile information
+     */
     @GetMapping("/getUserByUsername/{username}")
     public User getUserByUsername(@PathVariable String username){
         return this.userService.getUserByUsername(username);
