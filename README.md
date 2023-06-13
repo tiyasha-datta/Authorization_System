@@ -40,5 +40,8 @@ mvn spring-boot:run
 ```
 http://localhost:8080
 ```
-
+##Testing the APIS of the application
+```
+https://api.postman.com/collections/16517829-33b7b825-45fc-43ed-859b-20922a7de03b?access_key=PMAT-01H2TXZCNYSEG59905GDB0CYWW
+```
 
